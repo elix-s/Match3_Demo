@@ -316,7 +316,12 @@ public class GameController : MonoBehaviour
 
         if (uniqueCells.Count > 0)
         {
-            Vector3 effectPos = Vector3.zero;
+            var matchColor = _grid[uniqueCells[0].x, uniqueCells[0].y].BallColor;
+            int points = _colorScoreMapping[matchColor] * (uniqueCells.Count / 3);
+            _score += points;
+            _logger.Log("Current score:" + _score);
+            
+            var effectPosition = Vector3.zero;
             
             foreach (var cell in uniqueCells)
             {
@@ -324,24 +329,21 @@ public class GameController : MonoBehaviour
                 
                 if (ballRef != null)
                 {
-                    effectPos += ballRef.transform.position;
+                    effectPosition += ballRef.transform.position;
                 }
             }
-            effectPos /= uniqueCells.Count;
+            
+            effectPosition /= uniqueCells.Count;
+            effectPosition.z = -1.0f;
             
             if (_particleEffectPrefab != null)
             {
-                Instantiate(_particleEffectPrefab, effectPos, Quaternion.identity);
+                InstantiateEffect(_particleEffectPrefab, effectPosition).Forget();
             }
-            
-            BallColor matchColor = _grid[uniqueCells[0].x, uniqueCells[0].y].BallColor;
-            int points = _colorScoreMapping[matchColor] * (uniqueCells.Count / 3);
-            _score += points;
-            _logger.Log("Current score:" + _score);
             
             foreach (var cell in uniqueCells)
             {
-                Ball ballToRemove = _grid[cell.x, cell.y];
+                var ballToRemove = _grid[cell.x, cell.y];
                 
                 if (ballToRemove != null)
                 {
@@ -352,7 +354,7 @@ public class GameController : MonoBehaviour
             
             for (int col = 0; col < 3; col++)
             {
-                List<Ball> ballsInColumn = new List<Ball>();
+                var ballsInColumn = new List<Ball>();
                 
                 for (int row = 0; row < 3; row++)
                 {
@@ -376,5 +378,10 @@ public class GameController : MonoBehaviour
                 _columnHeights[col] = ballsInColumn.Count;
             }
         }
+    }
+    
+    private async UniTask InstantiateEffect(GameObject effectPrefab, Vector3 position)
+    {
+        InstantiateAsync(effectPrefab, position, Quaternion.identity);
     }
 }

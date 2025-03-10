@@ -21,7 +21,7 @@ public class LogoAnimation : MonoBehaviour
     private Vector2 _leftTargetPosition;
     private Vector2 _rightTargetPosition;
 
-    private void Start()
+    public void Init()
     {
         _leftTargetPosition = _leftText.rectTransform.anchoredPosition;
         _rightTargetPosition = _rightText.rectTransform.anchoredPosition;

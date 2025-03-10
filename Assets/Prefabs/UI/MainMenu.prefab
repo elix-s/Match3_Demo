@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftText: {fileID: 7224948850208817284}
   _rightText: {fileID: 1661525800861540832}
-  _moveDuration: 1
+  _moveDuration: 2
   _offsetX: 500
   _shakeDuration: 0.5
   _shakeStrength: 50
@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startGameButton: {fileID: 5094576187999870551}
+  _logoAnimation: {fileID: 8812239946246924289}
 --- !u!1 &8219059850694865289
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +575,10 @@ PrefabInstance:
     - target: {fileID: 7807719323432458084, guid: bb6fd65324eab62468bd9241d1610639, type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807719323432458084, guid: bb6fd65324eab62468bd9241d1610639, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
