@@ -382,6 +382,9 @@ public class GameController : MonoBehaviour
     
     private async UniTask InstantiateEffect(GameObject effectPrefab, Vector3 position)
     {
-        InstantiateAsync(effectPrefab, position, Quaternion.identity);
+        var effect = InstantiateAsync(effectPrefab, position, Quaternion.identity);
+        await UniTask.Delay(1000);
+        UniTask.WaitUntil(()=>effect.isDone);
+        Destroy(effect.Result[0]);
     }
 }
