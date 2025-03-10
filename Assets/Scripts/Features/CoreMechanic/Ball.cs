@@ -7,8 +7,9 @@ public class Ball : MonoBehaviour
 {
     public BallColor BallColor { get; set; } = BallColor.Red;
     public bool IsReleased { get; set; } = false;
-    public int TargetColumn = -1;
+    public int TargetColumn { get; set; } = -1;
     
+    [Header("Components")]
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     

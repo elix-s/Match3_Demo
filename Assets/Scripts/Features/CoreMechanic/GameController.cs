@@ -7,17 +7,17 @@ using VContainer;
 public class GameController : MonoBehaviour
 {
     [Header("Prefabs and components")]
-    public GameObject _ballPrefab;
-    public Transform _pendulumTransform; 
-    public GameObject _particleEffectPrefab;
+    [SerializeField] private GameObject _ballPrefab;
+    [SerializeField] private Transform _pendulumTransform; 
+    [SerializeField] private GameObject _particleEffectPrefab;
     
     [Header("Balls area settings")]
-    public float _dropZoneY = -2f;
-    public float _ballSpacing = 1.1f;
-    public float[] _columnXPositions = new float[3] { -1.2f, 0f, 1.2f };
+    [SerializeField] private float _dropZoneY = -4f;
+    [SerializeField] private float _ballSpacing = 1.1f;
+    [SerializeField] private float[] _columnXPositions = new float[3] { -1.2f, 0f, 1.2f };
 
     [Header("Force of releasing the ball")]
-    public float _releaseForce = 2f;
+    [SerializeField] private float _releaseForce = 2f;
    
     private List<BallColor> _ballSequence;
     private int _currentMoveIndex = 0;

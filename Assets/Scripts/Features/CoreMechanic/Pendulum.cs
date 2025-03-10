@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Pendulum : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private float _swingAmplitude = 20f; 
     [SerializeField] private float _swingSpeed = 2f;
     private float _timer;
